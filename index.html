@@ -11,19 +11,38 @@
     
     <header>
         <h1>Library</h1>
-        <nav> 
-            <button type="button">New Book</button>
-        </nav>
+
+        <section class="form">
+            <form action="#" method="post">
+                <div class="row--1">
+                    <ul>
+                        <li>
+                            <label for="first-name">Book Title</label>
+                            <input required type="text" id="book-title">
+                        </li>
+                        <li>
+                            <label for="last-name">Author</label>
+                            <input required type="text" id="book-author">
+                        </li>
+                        <li>
+                            <label for="last-name">Pages</label>
+                            <input required type="text" id="book-pages">
+                        </li>
+                        <li>
+                            <label for="last-name">Read it?</label>
+                            <input required type="checkbox" id="is-read">
+                        </li>
+                    </ul>
+                </div>
+                <button type="submit" class="new-book-btn">Add New Book</button>
+            </form>
+        </section>
     </header>
 
     <section class="book-list">
         <div id="book-container">
 
         </div>
-    </section>
-
-    <section class="form">
-        
     </section>
 
     <script src="library.js"></script>
