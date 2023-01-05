@@ -35,78 +35,78 @@ h3 {
 }
 
 header {
-    padding: 0 2.4rem;
+  padding: 0 2.4rem;
 }
 
 header h1 {
-    margin-bottom: 3.2rem;
+  margin-bottom: 3.2rem;
 }
 
 input {
-    background-color: aliceblue;
-    border-radius: 20px;
-    border: 2px solid #556;
-    margin-bottom: 0.8rem;
-    max-width: 24rem;
-    padding-left: 0.8rem;
+  background-color: aliceblue;
+  border-radius: 20px;
+  border: 2px solid #556;
+  margin-bottom: 0.8rem;
+  max-width: 24rem;
+  padding-left: 0.8rem;
 }
 
-input[type=checkbox] {
-    font-size: 8rem;
-    height: 2.4rem;
-    width: 2.4rem;
-    margin-left: 0.8rem;
-    margin-bottom: 0;
+input[type="checkbox"] {
+  font-size: 8rem;
+  height: 2.4rem;
+  width: 2.4rem;
+  margin-left: 0.8rem;
+  margin-bottom: 0;
 }
 
 header li {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 header li:last-child {
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 0.8rem;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 0.8rem;
+  align-items: center;
 }
 
 #book-container {
-    padding: 3.2rem 2.4rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(24rem, 20%));
-    gap: 3.2rem;
+  padding: 3.2rem 2.4rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(24rem, 20%));
+  gap: 3.2rem;
 }
 
 button {
-    font-size: 2.2rem;
-    padding: 0.4rem 0.8rem;
-    border-radius: 20px;
-    max-width: 20rem;
-    background-color: aliceblue;
-    transition: all 0.1s;
-    border: 2px solid #556;
-    color: #222;
+  font-size: 2.2rem;
+  padding: 0.4rem 2.4rem;
+  border-radius: 20px;
+  max-width: 20rem;
+  background-color: aliceblue;
+  transition: all 0.1s;
+  border: 2px solid #556;
+  color: #222;
 }
 
 button:hover {
-    transform: translateY(2px);
-    background-color: rgb(227, 234, 240);
+  transform: translateY(2px);
+  background-color: rgb(227, 234, 240);
 }
 
 .book {
-    height: 28rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background-color: aliceblue;
-    padding: 1.8rem;
-    border-radius: 20px;
+  min-height: 28rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: aliceblue;
+  padding: 1.8rem;
+  border-radius: 20px;
 }
 
 .remove-btn {
-    text-align: center;
-    align-self: center;
-    margin-top: 2.4rem;
-    width: 20rem;
+  text-align: center;
+  align-self: center;
+  margin-top: 2.4rem;
+  width: 20rem;
 }
