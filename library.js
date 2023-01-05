@@ -21,6 +21,14 @@ function removeBook(event) {
   index = book.dataset.index;
   myLibrary.splice(index, 1);
   book.parentElement.removeChild(book);
+
+  let bookList = Array.from(document.getElementsByClassName("book"));
+
+  // update the index of each book
+  bookList.forEach((book, index) => {
+    book.dataset.index = index;
+    console.log(book.dataset.index);
+  });
 }
 
 function Book() {
