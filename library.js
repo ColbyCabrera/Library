@@ -33,7 +33,6 @@ function removeBook(event) {
   // update the index of each book
   bookList.forEach((book, index) => {
     book.dataset.index = index;
-    console.log(book.dataset.index);
   });
 }
 
@@ -61,7 +60,11 @@ function displayBooks() {
     const bookTitle = document.createElement("h3");
     const bookAuthor = document.createElement("p");
     const bookPages = document.createElement("p");
+    const group = document.createElement("div");
     const isRead = document.createElement("p");
+    const isReadCheckbox = document.createElement("input");
+    const isReadIndicator = document.createElement("div");
+    isReadCheckbox.setAttribute("type", "checkbox");
     const removeBtn = document.createElement("button");
     removeBtn.type = "button";
     removeBtn.className = "remove-btn";
@@ -82,8 +85,13 @@ function displayBooks() {
     newBook.appendChild(bookTitle);
     newBook.appendChild(bookAuthor);
     newBook.appendChild(bookPages);
-    newBook.appendChild(isRead);
+    newBook.appendChild(group);
+    group.appendChild(isRead);
+    group.appendChild(isReadCheckbox);
+    group.appendChild(isReadIndicator);
     newBook.appendChild(removeBtn);
+
+    isReadCheckbox.addEventListener("click", changeReadStatus);
   });
 }
 
@@ -93,4 +101,20 @@ function updateButtons() {
   remove.forEach((btn) => {
     btn.addEventListener("click", removeBook);
   });
+}
+
+function changeReadStatus(event) {
+  const checkbox = event.target;
+  const book = checkbox.parentElement.parentElement;
+  const isReadIndicator = document.querySelector("[data-index=\"" + book.dataset.index + "\"] div div");
+  const isReadText = document.querySelector("[data-index=\"" + book.dataset.index + "\"] div p");
+  console.log(isReadIndicator);
+  
+  if(checkbox.checked === true) {
+    isReadIndicator.style.backgroundColor = "red";
+    isReadText.textContent = "Not read";
+  } else {
+    isReadIndicator.style.backgroundColor = "rgb(133, 190, 133)";
+    isReadText.textContent = "Read";
+  }
 }

@@ -123,3 +123,32 @@ button:hover {
   margin-top: 2.4rem;
   width: 20rem;
 }
+
+.book div {
+  display: flex;
+}
+
+.book input {
+  position: relative;
+  z-index: 1;
+  opacity: 1;
+  display: flex;
+  align-self: center;
+  opacity: 0;
+}
+
+.book div > div {
+  width: 1.8rem;
+  height: 1.8rem;
+  background-color: rgb(133, 190, 133);
+  border-radius: 50%;
+  transition: all 0.1s;
+  position: relative;
+  display: flex;
+  align-self: center;
+  transform: translateX(-2.2rem);
+}
+
+.book input:hover + div {
+  transform: translate(-2.2rem) scale(1.25);
+}
