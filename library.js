@@ -75,8 +75,10 @@ function displayBooks() {
 
     if (book.isRead === true) {
       isRead.textContent = "Read";
+      isReadIndicator.style.backgroundColor = "rgb(133, 190, 133)";
     } else {
       isRead.textContent = "Not read";
+      isReadIndicator.style.backgroundColor = "red";
     }
 
     bookContainer.appendChild(newBook);
@@ -112,13 +114,14 @@ function changeReadStatus(event) {
   const isReadText = document.querySelector(
     '[data-index="' + book.dataset.index + '"] div p'
   );
-  console.log(isReadIndicator);
 
-  if (checkbox.checked === true) {
+  if (checkbox.checked === true && myLibrary[book.dataset.index].isRead) {
     isReadIndicator.style.backgroundColor = "red";
     isReadText.textContent = "Not read";
+    myLibrary[book.dataset.index].isRead = false;
   } else {
     isReadIndicator.style.backgroundColor = "rgb(133, 190, 133)";
     isReadText.textContent = "Read";
+    myLibrary[book.dataset.index].isRead = true;
   }
 }
