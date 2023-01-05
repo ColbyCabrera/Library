@@ -6,6 +6,12 @@ let remove;
 
 newBookBtn.addEventListener("click", submitClick);
 
+function Book() {
+  this.info = function () {
+    return title + " by " + author + ", " + pages + ", " + isRead;
+  };
+}
+
 function submitClick(event) {
   event.preventDefault();
   const title = document.getElementById("book-title").value;
@@ -29,12 +35,6 @@ function removeBook(event) {
     book.dataset.index = index;
     console.log(book.dataset.index);
   });
-}
-
-function Book() {
-  this.info = function () {
-    return title + " by " + author + ", " + pages + ", " + isRead;
-  };
 }
 
 function addBookToLibrary(title, author, pages, isRead) {
