@@ -106,11 +106,15 @@ function updateButtons() {
 function changeReadStatus(event) {
   const checkbox = event.target;
   const book = checkbox.parentElement.parentElement;
-  const isReadIndicator = document.querySelector("[data-index=\"" + book.dataset.index + "\"] div div");
-  const isReadText = document.querySelector("[data-index=\"" + book.dataset.index + "\"] div p");
+  const isReadIndicator = document.querySelector(
+    '[data-index="' + book.dataset.index + '"] div div'
+  );
+  const isReadText = document.querySelector(
+    '[data-index="' + book.dataset.index + '"] div p'
+  );
   console.log(isReadIndicator);
-  
-  if(checkbox.checked === true) {
+
+  if (checkbox.checked === true) {
     isReadIndicator.style.backgroundColor = "red";
     isReadText.textContent = "Not read";
   } else {

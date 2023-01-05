@@ -41,18 +41,18 @@ header {
 }
 
 hr {
-    width: 30%;
-    margin-left: 10rem;
-    margin-bottom: 3.2rem;
+  width: 30%;
+  margin-left: 10rem;
+  margin-bottom: 3.2rem;
 }
 
 .break {
-    width: 90%;
-    margin: 4.2rem auto;
+  width: 90%;
+  margin: 4.2rem auto;
 }
 h1::after {
-    border-bottom: 2px solid #555;
-    height: 7px;
+  border-bottom: 2px solid #555;
+  height: 7px;
 }
 
 input {
