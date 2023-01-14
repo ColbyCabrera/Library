@@ -6,10 +6,36 @@ let remove;
 
 newBookBtn.addEventListener("click", submitClick);
 
-function Book() {
-  this.info = function () {
+class Book {
+
+  title;
+  author;
+  pages;
+  isRead;
+
+  constructor() {
+    
+  }
+
+  get info() {
     return title + " by " + author + ", " + pages + ", " + isRead;
-  };
+  }
+
+  set title(title) {
+    this.title = title;
+  }
+
+  set author(author) {
+    this.author = author;
+  }
+
+  set pages(pages) {
+    this.pages = pages;
+  }
+
+  set isRead(isRead) {
+    this.isRead = isRead;
+  }
 }
 
 function submitClick(event) {
