@@ -7,15 +7,12 @@ let remove;
 newBookBtn.addEventListener("click", submitClick);
 
 class Book {
-
   title;
   author;
   pages;
   isRead;
 
-  constructor() {
-    
-  }
+  constructor() {}
 
   get info() {
     return title + " by " + author + ", " + pages + ", " + isRead;
