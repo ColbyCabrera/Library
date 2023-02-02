@@ -2,7 +2,6 @@ const Library = (() => {
   let myLibrary = [];
   const bookContainer = document.getElementById("book-container");
   const newBookBtn = document.getElementById("new-book-btn");
-  let removeBtns = document.getElementsByClassName("remove-btn");
   let remove;
 
   newBookBtn.addEventListener("click", submitClick);
