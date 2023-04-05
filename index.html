@@ -21,21 +21,24 @@
 
       <hr>
 
-      <section class="form">
-        <form action="#" method="post">
+      <section class="form" method="post">
+        <form action="#">
           <div class="row--1">
             <ul>
               <li>
                 <label for="book-title">Book Title</label>
                 <input required type="text" id="book-title" />
+                <span id="title-val"></span>
               </li>
               <li>
                 <label for="book-author">Author</label>
                 <input required type="text" id="book-author" />
+                <span id="author-val"></span>
               </li>
               <li>
                 <label for="book-pages">Pages</label>
-                <input required type="number" id="book-pages" />
+                <input required type="number" id="book-pages" min="1" />
+                <span id="pages-val"></span>
               </li>
               <li>
                 <label for="is-read">Read it?</label>
@@ -55,5 +58,6 @@
     </section>
 
     <script src="library.js"></script>
-  </body>
+    <script src="validation.js"></script>
+  </body> 
 </html>

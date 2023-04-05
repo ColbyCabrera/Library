@@ -35,14 +35,66 @@ const Library = (() => {
     }
   }
 
-  function submitClick(event) {
-    event.preventDefault();
-    const title = document.getElementById("book-title").value;
-    const author = document.getElementById("book-author").value;
-    const pages = document.getElementById("book-pages").value;
-    const isRead = document.getElementById("is-read").checked;
+  function showErrors() {
+    const title = document.getElementById("book-title");
+    const author = document.getElementById("book-author");
+    const pages = document.getElementById("book-pages");
+    const titleVal = document.getElementById("title-val");
+    const authorVal = document.getElementById("author-val");
+    const pagesVal = document.getElementById("pages-val");
 
-    addBookToLibrary(title, author, pages, isRead);
+    if (title.validity.valueMissing) {
+      titleVal.textContent = "You need to enter a title";
+    } else {
+      titleVal.textContent = "";
+    }
+
+    if (author.validity.valueMissing) {
+      authorVal.textContent = "You need to enter an author";
+    } else {
+      authorVal.textContent = "";
+    }
+
+    if (pages.validity.typeMismatch) {1-1
+      pagesVal.textContent = "Enter a valid number";
+    } else {
+      pagesVal.textContent = "";
+    }
+
+    if (pages.validity.valueMissing) {
+      pagesVal.textContent = "Enter a valid number";
+    } else {
+      pagesVal.textContent = "";
+    }
+
+    if (pages.validity.rangeUnderflow) {
+      pagesVal.textContent = "Enter a valid number";
+    } else {
+      pagesVal.textContent = "";
+    }
+  }
+
+  function submitClick(event) {
+    const title = document.getElementById("book-title");
+    const author = document.getElementById("book-author");
+    const pages = document.getElementById("book-pages");
+    const isRead = document.getElementById("is-read");
+
+    if (
+      title.validity.valueMissing ||
+      author.validity.valueMissing ||
+      pages.validity.typeMismatch ||
+      pages.validity.valueMissing ||
+      pages.validity.rangeUnderflow
+    ) {
+      showErrors();
+  
+      event.preventDefault();
+    } else {
+      addBookToLibrary(title.value, author.value, pages.value, isRead.checked);
+    }
+
+    showErrors();
   }
 
   function removeBook(event) {
