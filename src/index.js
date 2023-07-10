@@ -1,3 +1,20 @@
+// Import the functions you need from the SDKs you need
+import firebase from 'firebase/app';
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyDGxolS2-nqQXWNea191x3cf0eN1JHXeSk",
+  authDomain: "library-47f2a.firebaseapp.com",
+  projectId: "library-47f2a",
+  storageBucket: "library-47f2a.appspot.com",
+  messagingSenderId: "921276267687",
+  appId: "1:921276267687:web:1fe76a7ed1753bd886af82"
+};
+
+// Initialize Firebase
+const app = firebase.initializeApp(firebaseConfig);
+
 const Library = (() => {
   let myLibrary = [];
   const bookContainer = document.getElementById("book-container");
