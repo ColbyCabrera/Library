@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Passions+Conflict&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,500;1,600&family=Roboto:wght@300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="../style.css" />
+    <title>Library</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>The Internet Library</h1>
+
+      <hr>
+
+      <section class="form" method="post">
+        <form action="#">
+          <div class="row--1">
+            <ul>
+              <li>
+                <label for="book-title">Book Title</label>
+                <input required type="text" id="book-title" />
+                <span id="title-val"></span>
+              </li>
+              <li>
+                <label for="book-author">Author</label>
+                <input required type="text" id="book-author" />
+                <span id="author-val"></span>
+              </li>
+              <li>
+                <label for="book-pages">Pages</label>
+                <input required type="number" id="book-pages" min="1" />
+                <span id="pages-val"></span>
+              </li>
+              <li>
+                <label for="is-read">Read it?</label>
+                <input type="checkbox" id="is-read" false />
+              </li>
+            </ul>
+          </div>
+          <button type="submit" id="new-book-btn">Add New Book</button>
+        </form>
+      </section>
+    </header>
+
+    <hr class="break">
+
+    <section class="book-list">
+      <div id="book-container"></div>
+    </section>
+
+    <script src="main.js"></script>
+    <!--<script src="validation.js"></script>-->
+  </body> 
+</html>
