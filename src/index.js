@@ -1,6 +1,7 @@
-// Import the functions you need from the SDKs you need
-import firebase from 'firebase/app';
-// https://firebase.google.com/docs/web/setup#available-libraries
+import firebase from "firebase/app";
+import firestore from "firebase/firestore";
+
+//import  from 'firebase/firebase-firestore';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -9,19 +10,36 @@ const firebaseConfig = {
   projectId: "library-47f2a",
   storageBucket: "library-47f2a.appspot.com",
   messagingSenderId: "921276267687",
-  appId: "1:921276267687:web:1fe76a7ed1753bd886af82"
+  appId: "1:921276267687:web:1fe76a7ed1753bd886af82",
 };
 
 // Initialize Firebase
-const app = firebase.initializeApp(firebaseConfig);
 
-const Library = (() => {
-  let myLibrary = [];
+const app = firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+const Library = (async () => {
+  const snapshot = await db.collection("Books").get();
+  let myLibrary = snapshot.docs.map((doc) => {
+    const bookData = doc.data();
+    return {
+      id: doc.id,
+      title: bookData.title,
+      author: bookData.author,
+      pages: bookData.pages,
+      isRead: bookData.isRead,
+    };
+  });
+
+  console.log(myLibrary);
+
   const bookContainer = document.getElementById("book-container");
   const newBookBtn = document.getElementById("new-book-btn");
   let remove;
 
   newBookBtn.addEventListener("click", submitClick);
+
+  displayBooks(myLibrary);
+  updateButtons();
 
   class Book {
     title;
@@ -72,7 +90,8 @@ const Library = (() => {
       authorVal.textContent = "";
     }
 
-    if (pages.validity.typeMismatch) {1-1
+    if (pages.validity.typeMismatch) {
+      1 - 1;
       pagesVal.textContent = "Enter a valid number";
     } else {
       pagesVal.textContent = "";
@@ -105,7 +124,7 @@ const Library = (() => {
       pages.validity.rangeUnderflow
     ) {
       showErrors();
-  
+
       event.preventDefault();
     } else {
       addBookToLibrary(title.value, author.value, pages.value, isRead.checked);
@@ -114,11 +133,22 @@ const Library = (() => {
     showErrors();
   }
 
-  function removeBook(event) {
+  async function removeBook(event) {
     let book = event.target.parentElement;
-    index = book.dataset.index;
+    let index = book.dataset.index;
+    let bookID = myLibrary[index].id;
     myLibrary.splice(index, 1);
     book.parentElement.removeChild(book);
+    await db
+      .collection("Books")
+      .doc(bookID)
+      .delete()
+      .then(() => {
+        console.log("Document successfully deleted!");
+      })
+      .catch((error) => {
+        console.error("Error removing document: ", error);
+      });
 
     let bookList = Array.from(document.getElementsByClassName("book"));
 
@@ -128,7 +158,7 @@ const Library = (() => {
     });
   }
 
-  function addBookToLibrary(title, author, pages, isRead) {
+  async function addBookToLibrary(title, author, pages, isRead) {
     let book = new Book();
     book.title = title;
     book.author = author;
@@ -137,6 +167,12 @@ const Library = (() => {
 
     myLibrary.push(book);
     displayBooks();
+    await db.collection("Books").add({
+      title: book.title,
+      author: book.author,
+      pages: book.pages,
+      isRead: book.isRead,
+    });
     updateButtons();
   }
 
@@ -197,9 +233,10 @@ const Library = (() => {
     });
   }
 
-  function changeReadStatus(event) {
+  async function changeReadStatus(event) {
     const checkbox = event.target;
     const book = checkbox.parentElement.parentElement;
+    const bookID = myLibrary[book.dataset.index].id;
     const isReadIndicator = document.querySelector(
       '[data-index="' + book.dataset.index + '"] div div'
     );
@@ -211,10 +248,36 @@ const Library = (() => {
       isReadIndicator.style.backgroundColor = "red";
       isReadText.textContent = "Not read";
       myLibrary[book.dataset.index].isRead = false;
+      await db
+        .collection("Books")
+        .doc(bookID)
+        .update({
+          isRead: false,
+        })
+        .then(() => {
+          console.log("Document successfully updated!");
+        })
+        .catch((error) => {
+          // The document probably doesn't exist.
+          console.error("Error updating document: ", error);
+        });
     } else {
       isReadIndicator.style.backgroundColor = "rgb(133, 190, 133)";
       isReadText.textContent = "Read";
       myLibrary[book.dataset.index].isRead = true;
+      await db
+        .collection("Books")
+        .doc(bookID)
+        .update({
+          isRead: true,
+        })
+        .then(() => {
+          console.log("Document successfully updated!");
+        })
+        .catch((error) => {
+          // The document probably doesn't exist.
+          console.error("Error updating document: ", error);
+        });
     }
   }
 })();
