@@ -134,9 +134,9 @@ const Library = (async () => {
   }
 
   async function removeBook(event) {
-    let book = event.target.parentElement;
-    let index = book.dataset.index;
-    let bookID = myLibrary[index].id;
+    const book = event.target.parentElement;
+    const index = book.dataset.index;
+    const bookID = myLibrary[index].id;
     myLibrary.splice(index, 1);
     book.parentElement.removeChild(book);
     await db
@@ -166,13 +166,13 @@ const Library = (async () => {
     book.isRead = isRead;
 
     myLibrary.push(book);
-    displayBooks();
     await db.collection("Books").add({
       title: book.title,
       author: book.author,
       pages: book.pages,
       isRead: book.isRead,
     });
+    displayBooks();
     updateButtons();
   }
 
@@ -200,6 +200,7 @@ const Library = (async () => {
       bookTitle.textContent = book.title;
       bookAuthor.textContent = book.author;
       bookPages.textContent = book.pages + " pages";
+      isReadCheckbox.name = index;
 
       if (book.isRead === true) {
         isRead.textContent = "Read";
