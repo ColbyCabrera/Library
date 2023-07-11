@@ -1,0 +1,164 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Passions Conflict", cursive;
+  font-family: "Poppins", sans-serif;
+}
+
+h1 {
+  font-size: 12rem;
+  font-family: "Passions Conflict";
+  font-weight: 200;
+}
+
+p,
+label {
+  font-size: 2.4rem;
+}
+
+input {
+  font-size: 2.2rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+}
+
+h3 {
+  font-size: 3.2rem;
+  margin-bottom: 0.8rem;
+}
+
+header {
+  padding: 0 2.4rem;
+}
+
+hr {
+  width: 30%;
+  margin-left: 10rem;
+  margin-bottom: 3.2rem;
+}
+
+.break {
+  width: 90%;
+  margin: 4.2rem auto;
+}
+h1::after {
+  border-bottom: 2px solid #555;
+  height: 7px;
+}
+
+input {
+  background-color: aliceblue;
+  border-radius: 20px;
+  border: 1px solid #556;
+  margin-bottom: 0.8rem;
+  max-width: 24rem;
+  padding-left: 0.8rem;
+}
+
+input[type="checkbox"] {
+  font-size: 8rem;
+  height: 2.4rem;
+  width: 2.4rem;
+  margin-left: 0.8rem;
+  margin-bottom: 0;
+}
+
+header li {
+  display: flex;
+  flex-direction: column;
+}
+
+header li:last-child {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 0.8rem;
+  align-items: center;
+}
+
+#book-container {
+  padding: 0 2.4rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(24rem, 20%));
+  gap: 3.2rem;
+}
+
+button {
+  font-size: 2.2rem;
+  padding: 0.4rem 2.4rem;
+  border-radius: 20px;
+  max-width: 20rem;
+  background-color: aliceblue;
+  transition: all 0.1s;
+  border: 2px solid #556;
+  color: #222;
+}
+
+button:hover {
+  transform: translateY(2px);
+  background-color: rgb(227, 234, 240);
+}
+
+.book {
+  min-height: 28rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: aliceblue;
+  padding: 1.8rem;
+  border-radius: 20px;
+}
+
+.remove-btn {
+  text-align: center;
+  align-self: center;
+  margin-top: 2.4rem;
+  width: 20rem;
+}
+
+.book div {
+  display: flex;
+}
+
+.book input {
+  position: relative;
+  z-index: 1;
+  opacity: 1;
+  display: flex;
+  align-self: center;
+  opacity: 0;
+}
+
+.book div > div {
+  width: 1.8rem;
+  height: 1.8rem;
+  background-color: rgb(133, 190, 133);
+  border-radius: 50%;
+  transition: all 0.1s;
+  position: relative;
+  display: flex;
+  align-self: center;
+  transform: translateX(-2.2rem);
+}
+
+.book input:hover + div {
+  transform: translate(-2.2rem) scale(1.25);
+}
+
+
+input:invalid {
+  border-color: #900;
+  background-color: #fdd;
+}
+
+span {
+  font-size: 1.4rem;
+}
